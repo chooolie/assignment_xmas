@@ -1,65 +1,28 @@
 void setup()
 {
-  size(2000,1000);
-  box = new Box();
+  size(2000, 1000);
   
-  x = 580;
-y = 310;
-
-x2 = 580;
-y2 = 510;
+  stroke(255);
+  fill(0);
   
-
-
-
-
+   x = 580;
+   y = 310;
+   
+   x2 = 580;
+   y2 = 510;
+ 
 }
 
 float x, y,x2,y2;
 int speed = 5;
 int xspeed = speed;
 int yspeed = 0;
-Box box;
+
 
 void draw()
-{
-  background(255,218,185);
-  
-  
-  box.update();
-  box.render();
-  
-   loadPixels();
-     
-   for(int x_var = 0;x_var< 250-1;x_var++)
-   {
-     for(int y_var = 0;y_var< 500-1;y_var++)
-     {
-       int loc1 = x_var + y_var *250;
-       int loc2 = (x_var + 1)  + y_var *250;
-       
-       float b1 = pixels[loc1];
-       float b2 = pixels[loc2];
-       
-       float diff = abs(b1-b2);
-       pixels[loc1]= color(diff);
-       
-       
-     }
-   }
-       
- 
-  
-  draw_stage();
-  draw_balls();
- 
-  
-}
-
-
-void draw_stage()
-{
-   stroke(148,0,211);
+{ 
+  background(0);
+     stroke(148,0,211);
   //draw stage
   strokeWeight(10);
   line(100,220,100,760);
@@ -79,12 +42,7 @@ void draw_stage()
   line(100,760,632,760);
   line(632,760,632,610);
   
-}
-
-void draw_balls()
-{
-  stroke(255,20,147);
-  fill(255,20,147);
+  
   ellipse(x, y, 30,30);
   ellipse(x2, y2, 30,30);
   
@@ -122,5 +80,5 @@ void draw_balls()
   x2 += xspeed;
   y2 += yspeed; 
   println(x + ", " + y);
-  
+
 }
