@@ -1,7 +1,7 @@
 void setup()
 {
   size(2000, 1000);
-  
+  box = new Box();
   stroke(255);
   fill(0);
   
@@ -13,6 +13,10 @@ void setup()
  
 }
 
+Box box;
+
+
+
 float x, y,x2,y2;
 int speed = 5;
 int xspeed = speed;
@@ -21,7 +25,10 @@ int yspeed = 0;
 
 void draw()
 { 
-  background(0);
+  background(255,218,185);
+  
+  box.update();
+  box.render();
      stroke(148,0,211);
   //draw stage
   strokeWeight(10);

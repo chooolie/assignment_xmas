@@ -4,8 +4,6 @@ class Box
   
   float x, y;
  
-   
-
   
  
   Box()
@@ -48,5 +46,4 @@ class Box
   }  
   
   
- 
 }
