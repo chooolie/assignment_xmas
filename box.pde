@@ -24,22 +24,26 @@ class Box
       //up key
       if (key == 'w')
       {
-        if(y<220 )
+        if(y<220 && x <610 )//block line 2
         {
-          y= y+5;
+          y= y+11;
         }
-        if(y<610 && x>380 && x<550)
+        if(y<610 && x>380 && x<550)// block line 4
         {
-          y=y+2;
+          y=y+11;
         }
-         if(x>550 && x<1030 && y<270)
+         if(x>550 && x<1030 && y<270)//block line 6
         {
-           y=y+2;
+           y=y+11;
+        }
+        if(x>1030 && x<1510 && y<135)//block line 8
+        {
+           y=y+6;
         }
         
         else
         {
-          y= y-3;
+          y= y-5;
         }      
             
       }//end up key
@@ -49,27 +53,56 @@ class Box
       
       if (key == 's')
       {
-     
-        y= y+3;
+        if(y>760 && x>1195 && x< 1460)//block line 10
+        {
+          y= y-5;
+        }
+        if(y>170 && x>1062 && x< 1195)//block line 12
+        {
+          y= y-5;
+        }
+         if(y>560 && x> 580 && x<1112 )//block line 14
+        {
+          y= y-5;
+        }
+        if(y>710 && x> 100 && x<580 )//block line 16
+        {
+          y= y-6;
+        }
+        else
+        {
+          y= y+5;
+        }
       }//end down key
       
       
       //left key
       
       if (key == 'a')
-       { 
-         
-         if(x>550 && x<560 && y<610 )
-         {
-          x=x+10;
-        }
-         if (x>0 && x <100 )
+       {
+          if (x>0 && x <100 )//block line 1
         {
-          x=x+2;
+          x=x+11;
         }
+         
+         if(x>550 && x<560 && y<610 )// block line 5
+         {
+          x=x+11;
+         }
+        
+         if (y<265 && x<1030  )//block line 7
+        {
+          x=x+11;
+        }
+        
+         if (y>220 && x>1190 && x<1195 )//block line 11
+        {
+          x=x+15;
+        }
+        
         else
         {
-          x= x-3;
+          x= x-5;
         }
         
       }//end left key
@@ -79,14 +112,27 @@ class Box
       
       if (key == 'd')
       {
-        if(x>380 && x<385  && y<610)
+        
+        if(x>380 && x<400  && y<610 && y>220)//block line 3
         {
-          x=x-2;
+          x=x-11;
         }
         
+        if(x>1460)//block line 9
+        {
+          x=x-5;
+        }
+        if(x>1062 && x<1114 && y>170 && y<610)//block line 13
+        {
+          x=x-11;
+        }
+         if(x>580 && x<635 && y>560 && y<760)//block line 15
+        {
+          x=x-5;
+        }
         else
         {
-          x= x+3;
+          x= x+5;
         }
         
       }//end right key
