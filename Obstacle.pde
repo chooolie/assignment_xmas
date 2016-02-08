@@ -1,12 +1,12 @@
 class Obstacle 
 {
   float x, y,x2,y2, x3,y3,x4,y4;
-int speed = 15;
+int speed =5;
 int xspeed = speed;
 int yspeed = 0;
 
-int speed2 = 15;
-int xspeed2 = speed;
+int speed2 = 5;
+int xspeed2 = speed2;
 int yspeed2 = 0;
 
 
@@ -113,11 +113,5 @@ void draw_balls2()
   //println(x + ", " + y);
   
 }
-
-
-
-
-
-
 
 }

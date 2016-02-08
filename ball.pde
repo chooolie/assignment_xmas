@@ -1,12 +1,12 @@
 // The class name starts with uppercase
-class Box
+class Ball
 {
   
   float x, y;
  
   //boolean AI;
  
-  Box()
+  Ball()
   {
     x = 250;
     y = 500;
@@ -14,12 +14,12 @@ class Box
   } 
   
   
-  //moving the box with w,a,s,d
+  //moving the Ball with w,a,s,d
   void update()
   {
     
   
- //making the walls impassible by the box sprite  
+ //making the walls impassible by the Ball sprite  
     
     if (keyPressed)
     {
