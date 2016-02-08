@@ -4,14 +4,16 @@ class Box
   
   float x, y;
  
-  
+  //boolean AI;
  
   Box()
   {
     x = 250;
     y = 500;
    
-  }  
+  } 
+  
+  
   //moving the box with w,a,s,d
   void update()
   {
@@ -28,15 +30,15 @@ class Box
         {
           y= y+11;
         }
-        if(y<610 && x>380 && x<550)// block line 4
+        if(y<640 && x>380 && x<530)// block line 4
         {
           y=y+11;
         }
-         if(x>550 && x<1030 && y<270)//block line 6
+         if(x>550 && x<1030 && y<290)//block line 6
         {
            y=y+11;
         }
-        if(x>1030 && x<1510 && y<135)//block line 8
+        if(x>1030 && x<1510 && y<155)//block line 8
         {
            y=y+6;
         }
@@ -61,7 +63,7 @@ class Box
         {
           y= y-5;
         }
-         if(y>560 && x> 580 && x<1112 )//block line 14
+         if(y>580 && x> 600 && x<1112 )//block line 14
         {
           y= y-5;
         }
@@ -80,24 +82,24 @@ class Box
       
       if (key == 'a')
        {
-          if (x>0 && x <100 )//block line 1
+          if (x>0 && x <130 )//block line 1
         {
           x=x+11;
         }
          
-         if(x>550 && x<560 && y<610 )// block line 5
+         if(x>550 && x<580 && y<610 )// block line 5
          {
           x=x+11;
          }
         
-         if (y<265 && x<1030  )//block line 7
+         if (y<265 && x<1055  )//block line 7
         {
           x=x+11;
         }
         
          if (y>220 && x>1190 && x<1195 )//block line 11
         {
-          x=x+15;
+          x=x+11;
         }
         
         else
@@ -113,7 +115,7 @@ class Box
       if (key == 'd')
       {
         
-        if(x>380 && x<400  && y<610 && y>220)//block line 3
+        if(x>400 && x<410  && y<610 && y>220)//block line 3
         {
           x=x-11;
         }
@@ -122,11 +124,11 @@ class Box
         {
           x=x-5;
         }
-        if(x>1062 && x<1114 && y>170 && y<610)//block line 13
+        if(x>1080 && x<1114 && y>190 && y<610)//block line 13
         {
           x=x-11;
         }
-         if(x>580 && x<635 && y>560 && y<760)//block line 15
+         if(x>600 && x<635 && y>580 && y<760)//block line 15
         {
           x=x-5;
         }
@@ -145,7 +147,7 @@ class Box
   {
     stroke(127,255,212);
     fill(127,255,212);
-    rect(x, y, 44, 44, 7);
+    ellipse(x, y, 40, 40);
     
   }  
   

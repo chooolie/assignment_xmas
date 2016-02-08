@@ -3,25 +3,16 @@ void setup()
   size(2000,1000);
   box = new Box();
   stage = new Stage();
-  
-  x = 580;
-y = 310;
-
-x2 = 580;
-y2 = 510;
-  
-
-
-
+  obstacle = new Obstacle();
+  life_counter = 0;
+  life = 10;
 
 }
 
-float x, y,x2,y2;
-int speed = 5;
-int xspeed = speed;
-int yspeed = 0;
+int life_counter, life;
 Box box;
 Stage stage;
+Obstacle obstacle;
 
 void draw()
 {
@@ -30,78 +21,40 @@ void draw()
   
   box.update();
   box.render();
+  obstacle.draw_balls();
+  obstacle.draw_balls2();
   stage.draw_stage();
+  die();
+  ends();
   
-   loadPixels();
-     
-   for(int x_var = 0;x_var< 250-1;x_var++)
-   {
-     for(int y_var = 0;y_var< 500-1;y_var++)
-     {
-       int loc1 = x_var + y_var *250;
-       int loc2 = (x_var + 1)  + y_var *250;
-       
-       float b1 = pixels[loc1];
-       float b2 = pixels[loc2];
-       
-       float diff = abs(b1-b2);
-       pixels[loc1]= color(diff);
-       
-       
-     }
-   }
-       
- 
-  
- // Stage.draw_stage();
-  draw_balls();
- 
   
 }
 
-
-
-
-void draw_balls()
+void die()
 {
-  stroke(255,20,147);
-  fill(255,20,147);
-  ellipse(x, y, 30,30);
-  ellipse(x2, y2, 30,30);
   
-  
- if (x >1080 )
+  if(dist(box.x, box.y, obstacle.x,obstacle.y)<=40)
   {
-    xspeed = -speed;
-    yspeed = 0;
-    //x =  15;
-  }
-   if (x < 580)
-  {
-    xspeed = speed;
-    yspeed = 0;
-    x = 590-15;
+    life_counter++;
+    
+    
   }
   
-  x += xspeed;
-  y += yspeed;  
-  
-  
-   if (x2 >1080 )
+  if(dist(box.x, box.y, obstacle.x2,obstacle.y2)<=40)
   {
-    xspeed = -speed;
-    yspeed = 0;
-    //x =  15;
+    life_counter++;
+    
   }
-   if (x2 < 580)
+  if(dist(box.x, box.y, obstacle.x3,obstacle.y3)<=40)
   {
-    xspeed = speed;
-    yspeed = 0;
-    x2 = 590-15;
+    life_counter++;
+    
+  }
+  if(dist(box.x, box.y, obstacle.x4,obstacle.y4)<=40)
+  {
+    life_counter++;
+   
   }
   
-  x2 += xspeed;
-  y2 += yspeed; 
-  println(x + ", " + y);
   
 }
