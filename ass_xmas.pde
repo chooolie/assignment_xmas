@@ -4,11 +4,12 @@ void setup()
   box = new Box();
   stage = new Stage();
   obstacle = new Obstacle();
-  life_counter = 0;
-  life = 10;
+  life_counter = 9;
+  lives = 0;
+  
 
 }
-
+int lives;
 int life_counter, life;
 Box box;
 Stage stage;
@@ -16,8 +17,14 @@ Obstacle obstacle;
 
 void draw()
 {
+  
+  if(life_counter >= lives)
+  {
   background(255,218,185);
   
+  stroke(127,255,212);
+  textSize(40);
+  text("Lifes = " + life_counter, 100,100);
   
   box.update();
   box.render();
@@ -25,9 +32,14 @@ void draw()
   obstacle.draw_balls2();
   stage.draw_stage();
   die();
-  //ends();
-  //start_again();
-  gameover();
+  
+  }
+  
+  else
+  {
+   background(255,218,185);
+  }
+  
   
 }
 
@@ -36,60 +48,28 @@ void die()
   
   if(dist(box.x, box.y, obstacle.x,obstacle.y)<=40)
   {
-    life_counter++;
-    if(life_counter <10)
-    {
-      start_again();
-    }
-    
-    else
-    {
-      gameover();
-    }
+    life_counter--;
+     start_again();
    
   }
   
   if(dist(box.x, box.y, obstacle.x2,obstacle.y2)<=40)
   {
-    life_counter++;
-    if(life_counter <10)
-    {
-      start_again();
-    }
-    
-    else
-    {
-      gameover();
-    }
+    life_counter--;
+     start_again();
     
   }
   if(dist(box.x, box.y, obstacle.x3,obstacle.y3)<=40)
   {
-    life_counter++;
-    if(life_counter <10)
-    {
-      start_again();
-    }
-    
-    else
-    {
-      gameover();
-    }
+    life_counter--;
+    start_again();
     
   }
   if(dist(box.x, box.y, obstacle.x4,obstacle.y4)<=40)
   {
-    life_counter++;
-    if(life_counter <10)
-    {
-      start_again();
-    }
-    
-    else
-    {
-      gameover();
-    }
-   
+    life_counter--;
+  
+    start_again();
   }
   
   
@@ -102,9 +82,5 @@ void start_again()
   
 }
 
-void gameover()
-{
-  
-  
-}
+
   

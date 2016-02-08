@@ -30,7 +30,7 @@ class Box
         {
           y= y+11;
         }
-        if(y<640 && x>380 && x<530)// block line 4
+        if(y<640 && x>380 && x<575)// block line 4
         {
           y=y+11;
         }
@@ -87,7 +87,7 @@ class Box
           x=x+11;
         }
          
-         if(x>550 && x<580 && y<610 )// block line 5
+         if(x>550 && x<580 && y<620 )// block line 5
          {
           x=x+11;
          }
