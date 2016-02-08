@@ -26,11 +26,11 @@ class Box
       //up key
       if (key == 'w')
       {
-        if(y<220 && x <610 )//block line 2
+        if(y<240 && x <610 )//block line 2
         {
           y= y+11;
         }
-        if(y<640 && x>380 && x<575)// block line 4
+        if(y<640 && x>410 && x<575)// block line 4
         {
           y=y+11;
         }
