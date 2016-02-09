@@ -1,3 +1,16 @@
+import java.util.*;
+import ddf.minim.spi.*;
+import ddf.minim.signals.*;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.ugens.*;
+import ddf.minim.effects.*;
+
+ boolean keyP;
+ 
+Minim minim;
+AudioPlayer song;
+
 void setup()
 {
   size(2000,1000);
@@ -7,6 +20,9 @@ void setup()
   life_counter = 10;
   lives = 0;
   
+  minim = new Minim(this);
+  song = minim.loadFile("jump.mp3");
+  
   //showing how long the game has been played for
   
   time = millis();//store the current time
@@ -15,7 +31,6 @@ void setup()
   
 
 }
-
 
 int wait = 1000;
 int time;//divide my thousand to get second
@@ -98,8 +113,8 @@ void draw()
       text("Medium", 750,480 );
       text("Hard", 780,680 );
       
-     textSize(10);
-      text("speed = " + obstacle.speed, 20,20);
+      textSize(30);
+      text("speed = " + obstacle.speed, 30,30);
      // text("speed = " + obstacle.speed2, 20,30);
      
      
@@ -116,26 +131,50 @@ void draw()
 void drawMenu()
 {
   
- life_counter = 2;
+  life_counter = 2;//lives go back to start when starting new game
+  
   background(255,218,185);
-  stroke(255);
-  strokeWeight(20);
-  
-  textSize(40);
+  textSize(100);
   fill(255,51,51);
+ 
   
-  text("PRESS 1 TO play game or 2 to change difficulty", 750, 500);
+  fill(127,255,212);
+  stroke(127,255,212);
+  rect(600,500,500,100);//play 
+  rect(600,700,500,100);//choose difficulty
+  
+  stroke(0);
+  fill(0);
+  
+  text("THE WORLDS HARDEST GAME", 250, 200);
+  textSize(40);
+  text("Play game", 750,560 );
+  text("Choose difficulty", 700,770 );
+    
+  
 
+}
+
+void win()
+{
+  
+  
+  
 }
 
 
 void die()
 {
   
+  
+  
   if(dist(ball.x, ball.y, obstacle.x,obstacle.y)<=40)
   {
     life_counter--;
      start_again();
+     keyP=true;
+      song.play();
+      song.rewind();
    
   }
   
@@ -143,12 +182,17 @@ void die()
   {
     life_counter--;
      start_again();
-    
+    keyP=true;
+      song.play();
+      song.rewind();
   }
   if(dist(ball.x, ball.y, obstacle.x3,obstacle.y3)<=40)
   {
     life_counter--;
     start_again();
+    keyP=true;
+      song.play();
+      song.rewind();
     
   }
   if(dist(ball.x, ball.y, obstacle.x4,obstacle.y4)<=40)
@@ -156,6 +200,9 @@ void die()
     life_counter--;
   
     start_again();
+    keyP=true;
+      song.play();
+      song.rewind();
   }
   
   
@@ -173,57 +220,87 @@ int mode = 0;
 
 void keyPressed()
 {
-  if (key >= '0' && key <='9')
+  if (key >= '0' && key <='9')//menu choice
   {
     mode = key - '0';
   }
+  
+ 
+      
+    
 }
 
-
+//difficulty depends on speed of obstacles
+//choose between 3 different speeds
+//speed - easy = 5 medium = 10 hard = 15
 void easy()
 {
   obstacle.speed = 5;
   obstacle.speed2 = 5;
+  
+  //mode = 1;
 }
 
 void medium()
 {
   obstacle.speed = 10;
   obstacle.speed2 = 10;
+  
+ // mode =1;
 }
 
 void hard()
 {
   obstacle.speed = 15;
   obstacle.speed2 = 15;
+  
+  //mode = 1;
 }
 
 
 void mouseClicked()
 {
-  if(mode == 2)
+  
+  if(mode == 0)//if in menu to choose difficulty
   {
-  if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 200) && (mouseY < 300)) 
+  if ((mouseX > 600) && (mouseX < 900) && (mouseY > 500) && (mouseY < 600)) //if touching medium box
+  {
+    mode =1;
+  }
+  
+  if ((mouseX > 600) && (mouseX < 900) && (mouseY > 700) && (mouseY < 800)) //if touching hard box
+  {
+    mode =2;
+  }
+  
+ 
+  
+ }
+  
+  
+  if(mode == 2)//if in menu to choose difficulty
+  {
+  if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 200) && (mouseY < 300)) //if touching easy box
   {
     easy();
+    
   }
   
-  if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 400) && (mouseY < 500)) 
+  if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 400) && (mouseY < 500)) //if touching medium box
   {
     medium();
+     
   }
   
-  if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 600) && (mouseY < 700)) 
+  if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 600) && (mouseY < 700)) //if touching hard box
   {
     hard();
+    
   }
 
   
   }
 }
-
-
-
 
 
 
