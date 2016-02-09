@@ -69,10 +69,22 @@ void draw()
       background(255,218,185);
       text((time/1000),100,100);//time left
       line(50,10,tick ? 10 : 90,90);//ticker
-      
+     
+       
+       
       stroke(127,255,212);
+      fill(148,0,211);
       textSize(40);
       text("Lifes = " + life_counter, 1600,100);
+     
+      fill(127,255,212);
+      stroke(127,255,212);
+      rect(1580,200,170,70);
+      
+        stroke(0);
+        fill(0);
+       text("Menu", 1600,250);
+      
       
       ball.update();
       ball.render();
@@ -90,8 +102,6 @@ void draw()
        text("GAME OVER :(, YOU LOSE", 1000, 750);
        text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
        
-       
-       
       }
   
    
@@ -106,6 +116,9 @@ void draw()
       rect(400,200,1000,100);
       rect(400,400,1000,100);
       rect(400,600,1000,100);
+      fill(153,255,153);
+      stroke(153,255,153);
+      rect(700,800,400,100);
       
       
       stroke(0);
@@ -114,15 +127,30 @@ void draw()
       text("Easy", 780,280 );
       text("Medium", 750,480 );
       text("Hard", 780,680 );
+      text("PLAY!", 800, 880);
       
       textSize(30);
       text("speed = " + obstacle.speed, 30,30);
      // text("speed = " + obstacle.speed2, 20,30);
-     
+      
      
      break;     
      
      
+    }
+    
+    case 3:
+    {
+     
+         background(255,218,185);
+         textSize(100);
+         text("YOU WIN!!!!", 500, 200);
+         textSize(40);
+         text("press 0 to go back to main menu!", 500, 500);
+          
+        
+       
+     break; 
     }
  
   }
@@ -160,16 +188,18 @@ void drawMenu()
 void win()
 {
   
- if(ball.x > 1115)
-  {
-    background(255,218,185);
-    textSize(100);
-    text("YOU WIN!!!!", 500, 200);
-    textSize(40);
-    text("press 0 to go back to main menu!", 500, 500);
+if(ball.x > 1115)
+ {
+   
+   mode =3;
+//   background(255,218,185);
+//   textSize(100);
+//   text("YOU WIN!!!!", 500, 200);
+//   textSize(40);
+//   text("press 0 to go back to main menu!", 500, 500);
     
   
-  }
+ }
   
 }
 
@@ -288,6 +318,16 @@ void mouseClicked()
  
   
  }
+ 
+ if(mode == 1)
+ {
+   
+   if ((mouseX > 1580) && (mouseX < 1750) && (mouseY > 200) && (mouseY < 270)) //if touching easy box
+  {
+    mode =0;
+    
+  }
+ }
   
   
   if(mode == 2)//if in menu to choose difficulty
@@ -309,6 +349,12 @@ void mouseClicked()
     hard();
     
   }
+  
+   if ((mouseX > 700) && (mouseX < 1100) && (mouseY > 800) && (mouseY < 900)) //if touching hard box
+    {
+      mode = 1;
+      
+    }
 
   
   }
