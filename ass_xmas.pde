@@ -160,7 +160,7 @@ void drawMenu()
 void win()
 {
   
-  if(ball.x > 1115)
+ if(ball.x > 1115)
   {
     background(255,218,185);
     textSize(100);
@@ -168,6 +168,7 @@ void win()
     textSize(40);
     text("press 0 to go back to main menu!", 500, 500);
     
+  
   }
   
 }
