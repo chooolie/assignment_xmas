@@ -51,6 +51,7 @@ void draw()
     case 0:
     {
        drawMenu(); 
+       start_again();
        break;
     }
   case 1:
@@ -79,6 +80,7 @@ void draw()
       obstacle.draw_balls2();
       stage.draw_stage();
       die();
+      win();
       
       }
       
@@ -158,7 +160,15 @@ void drawMenu()
 void win()
 {
   
-  
+  if(ball.x > 1115)
+  {
+    background(255,218,185);
+    textSize(100);
+    text("YOU WIN!!!!", 500, 200);
+    textSize(40);
+    text("press 0 to go back to main menu!", 500, 500);
+    
+  }
   
 }
 
@@ -263,6 +273,7 @@ void mouseClicked()
   
   if(mode == 0)//if in menu to choose difficulty
   {
+    
   if ((mouseX > 600) && (mouseX < 900) && (mouseY > 500) && (mouseY < 600)) //if touching medium box
   {
     mode =1;
