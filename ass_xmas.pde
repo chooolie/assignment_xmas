@@ -119,6 +119,7 @@ void draw()
       textSize(40);
       text("Lifes = " + life_counter, 1600,100);
       
+      
       ball.update();
       ball.render();
       obstacle.draw_balls();
@@ -127,7 +128,9 @@ void draw()
       die();
       
       win();
-      
+      fill(148,0,211);
+      stroke(148,0,211);
+      rect(1600,800,200,50);
       
       }
       
@@ -157,7 +160,11 @@ void draw()
         tick = !tick;
         time = millis();//update time
       }
-        
+      
+      
+        fill(148,0,211);
+        stroke(148,0,211);
+      
         text((time/1000),100,100);//time left
         line(50,10,tick ? 10 : 90,90);//ticker
         
