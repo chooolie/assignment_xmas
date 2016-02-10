@@ -64,51 +64,7 @@ void draw()
 
        break;
     }
-  case 2:
-    {
-        
-        if(life_counter >= lives)
-      {
-        
-      if(millis() - time >= wait)
-      {
-
-        tick = !tick;
-        time = millis();//update time
-      }
-      
-      background(255,218,185);
-      text((time/1000),100,100);//time left
-      line(50,10,tick ? 10 : 90,90);//ticker
-      
-      stroke(127,255,212);
-      textSize(40);
-      text("Lifes = " + life_counter, 1600,100);
-      
-      ball.update();
-      ball.render();
-      obstacle.draw_balls();
-      obstacle.draw_balls2();
-      stage.draw_stage();
-      die();
-      
-      win();
-      
-      }
-      
-      else
-      {
-       background(255,218,185);
-       text("GAME OVER :(, YOU LOSE", 1000, 750);
-       text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
-       
-       
-       
-      }
   
-   
-      break;
-    }
     
     case 1:
     {
@@ -142,6 +98,52 @@ void draw()
      
     }
     
+    case 2:
+    {
+        
+        if(life_counter >= lives)
+      {
+        
+      if(millis() - time >= wait)
+      {
+
+        tick = !tick;
+        time = millis();//update time
+      }
+      
+      background(255,218,185);
+      text((time/1000),100,100);//time left
+      line(50,10,tick ? 10 : 90,90);//ticker
+      
+      stroke(127,255,212);
+      textSize(40);
+      text("Lifes = " + life_counter, 1600,100);
+      
+      ball.update();
+      ball.render();
+      obstacle.draw_balls();
+      obstacle.draw_balls2();
+      stage.draw_stage();
+      die();
+      
+      win();
+      
+      
+      }
+      
+      else
+      {
+       background(255,218,185);
+       text("GAME OVER :(, YOU LOSE", 1000, 750);
+       text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
+       
+       
+       
+      }
+  
+   
+      break;
+    }
     case 3:
     {
       
@@ -169,6 +171,7 @@ void draw()
         obstacle_2.draw_balls4();
         obstacle_2.draw_balls5();
         die2();
+        win2();
         
       }
            
@@ -232,6 +235,21 @@ if(ball.x > 1115)
  {
    
    mode =3;
+
+  text("press 0 to go back to main menu!", 500, 500);
+    
+  
+ }
+  
+}
+
+void win2()
+{
+  
+if(ball2.x > 1180)
+ {
+   
+   mode =4;
 
   text("press 0 to go back to main menu!", 500, 500);
     
@@ -421,6 +439,14 @@ void easy()
   obstacle.speed = 5;
   obstacle.speed2 = 5;
   
+  obstacle_2.speed = 5;
+  obstacle_2.speed2 = 5;
+  obstacle_2.speed3 = 5;
+  obstacle_2.speed4 = 5;
+  obstacle_2.speed5 = 5;
+  
+  
+  
   //mode = 1;
 }
 
@@ -429,6 +455,12 @@ void medium()
   obstacle.speed = 10;
   obstacle.speed2 = 10;
   
+  obstacle_2.speed = 10;
+  obstacle_2.speed2 = 10;
+  obstacle_2.speed3 = 10;
+  obstacle_2.speed4 = 10;
+  obstacle_2.speed5 = 10;
+  
  // mode =1;
 }
 
@@ -436,6 +468,12 @@ void hard()
 {
   obstacle.speed = 15;
   obstacle.speed2 = 15;
+  
+  obstacle_2.speed = 15;
+  obstacle_2.speed2 = 15;
+  obstacle_2.speed3 = 15;
+  obstacle_2.speed4 = 15;
+  obstacle_2.speed5 = 15;
   
   //mode = 1;
 }

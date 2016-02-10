@@ -57,7 +57,7 @@ class Ball2
         {
           y= y-5;
         }
-        if(y>510 && x <680 )//block line 10
+        if(y>510 && x <670 )//block line 10
         {
           y= y-5;
         }
