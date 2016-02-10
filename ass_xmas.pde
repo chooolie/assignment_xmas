@@ -132,6 +132,10 @@ void draw()
       stroke(148,0,211);
       rect(1600,800,200,50);
       
+      stroke(0);
+      fill(0);
+      text("Menu", 1650,840);
+      
       }
       
       else
@@ -139,8 +143,6 @@ void draw()
        background(255,218,185);
        text("GAME OVER :(, YOU LOSE", 1000, 750);
        text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
-       
-       
        
       }
   
@@ -183,6 +185,20 @@ void draw()
         die2();
         win2();
         
+      fill(148,0,211);
+      stroke(148,0,211);
+      rect(1600,800,200,50);
+      
+      stroke(0);
+      fill(0);
+      text("Menu", 1650,840);
+        
+      }
+      else
+      {
+        background(255,218,185);
+       text("GAME OVER :(, YOU LOSE", 1000, 750);
+       text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
       }
            
           
@@ -541,6 +557,19 @@ void mouseClicked()
     }
   
   }
+  
+  
+  if(mode == 2 || mode ==3)//if in game go back to menu
+  {
+  if ((mouseX > 1600) && (mouseX < 1800) && (mouseY > 800) && (mouseY < 850)) //if touching easy box
+  {
+   mode =0;
+    
+  }
+ 
+  
+  
+}
 }
 
 
