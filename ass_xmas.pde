@@ -15,17 +15,20 @@ void setup()
 {
   size(2000,1000);
   ball = new Ball();
+  ball2 = new Ball2();
   stage = new Stage();
+  stage_2 = new Stage_2();
   obstacle = new Obstacle();
   life_counter = 10;
   lives = 0;
+  time = millis();
   
   minim = new Minim(this);
   song = minim.loadFile("jump.mp3");
   
   //showing how long the game has been played for
   
-  time = millis();//store the current time
+  //store the current time
   smooth();
   strokeWeight(3);
   
@@ -38,8 +41,10 @@ boolean tick; // for ticker
 int lives;
 int life_counter, life;
 Ball ball;
+Ball2 ball2;
 Stage stage;
 Obstacle obstacle;
+Stage_2 stage_2;
 
 void draw()
 {
@@ -52,16 +57,18 @@ void draw()
     {
        drawMenu(); 
        start_again();
+
        break;
     }
   case 1:
     {
-         
+        
         if(life_counter >= lives)
       {
         
       if(millis() - time >= wait)
       {
+
         tick = !tick;
         time = millis();//update time
       }
@@ -69,22 +76,10 @@ void draw()
       background(255,218,185);
       text((time/1000),100,100);//time left
       line(50,10,tick ? 10 : 90,90);//ticker
-     
-       
-       
+      
       stroke(127,255,212);
-      fill(148,0,211);
       textSize(40);
       text("Lifes = " + life_counter, 1600,100);
-     
-      fill(127,255,212);
-      stroke(127,255,212);
-      rect(1580,200,170,70);
-      
-        stroke(0);
-        fill(0);
-       text("Menu", 1600,250);
-      
       
       ball.update();
       ball.render();
@@ -101,6 +96,8 @@ void draw()
        background(255,218,185);
        text("GAME OVER :(, YOU LOSE", 1000, 750);
        text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
+       
+       
        
       }
   
@@ -121,6 +118,7 @@ void draw()
       rect(700,800,400,100);
       
       
+      
       stroke(0);
       fill(0);
       textSize(90);
@@ -132,7 +130,7 @@ void draw()
       textSize(30);
       text("speed = " + obstacle.speed, 30,30);
      // text("speed = " + obstacle.speed2, 20,30);
-      
+     
      
      break;     
      
@@ -151,6 +149,17 @@ void draw()
         
        
      break; 
+    }
+    
+    case 4:
+    {
+      background(255,218,185);
+      stage_2.draw_stage2();
+      ball2.update();
+      ball2.render();
+      
+      
+      break;
     }
  
   }
@@ -192,11 +201,8 @@ if(ball.x > 1115)
  {
    
    mode =3;
-//   background(255,218,185);
-//   textSize(100);
-//   text("YOU WIN!!!!", 500, 200);
-//   textSize(40);
-//   text("press 0 to go back to main menu!", 500, 500);
+
+  text("press 0 to go back to main menu!", 500, 500);
     
   
  }
@@ -302,7 +308,7 @@ void hard()
 void mouseClicked()
 {
   
-  if(mode == 0)//if in menu to choose difficulty
+  if(mode == 0)//if in menu to choose difficulty or play
   {
     
   if ((mouseX > 600) && (mouseX < 900) && (mouseY > 500) && (mouseY < 600)) //if touching medium box
@@ -318,19 +324,9 @@ void mouseClicked()
  
   
  }
- 
- if(mode == 1)
- {
-   
-   if ((mouseX > 1580) && (mouseX < 1750) && (mouseY > 200) && (mouseY < 270)) //if touching easy box
-  {
-    mode =0;
-    
-  }
- }
   
   
-  if(mode == 2)//if in menu to choose difficulty
+  if(mode == 2)//if in menu to change difficulty
   {
   if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 200) && (mouseY < 300)) //if touching easy box
   {
@@ -350,12 +346,11 @@ void mouseClicked()
     
   }
   
-   if ((mouseX > 700) && (mouseX < 1100) && (mouseY > 800) && (mouseY < 900)) //if touching hard box
+  if ((mouseX > 700) && (mouseX < 1100) && (mouseY > 800) && (mouseY < 900)) //if touching hard box
     {
       mode = 1;
       
     }
-
   
   }
 }
