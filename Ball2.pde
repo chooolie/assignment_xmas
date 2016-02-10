@@ -103,6 +103,16 @@ class Ball2
       
       if (key == 'd')
       {
+        if(x>1130 && x<1140 && y<440 )
+        {
+           x=x-11;
+        }
+        
+        if(x>1130 && x<1140 && y>525 )
+        {
+           x=x-11;
+        }
+      
         
         if(x>1270 )//block line 3
         {
@@ -124,7 +134,7 @@ class Ball2
   {
     stroke(127,255,212);
     fill(127,255,212);
-    ellipse(x, y, 40, 40);
+    ellipse(x, y, 20, 20);
     
   }  
   

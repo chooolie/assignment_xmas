@@ -19,6 +19,7 @@ void setup()
   stage = new Stage();
   stage_2 = new Stage_2();
   obstacle = new Obstacle();
+  obstacle_2 = new Obstacle_2();
   life_counter = 10;
   lives = 0;
   time = millis();
@@ -44,6 +45,7 @@ Ball ball;
 Ball2 ball2;
 Stage stage;
 Obstacle obstacle;
+Obstacle_2 obstacle_2;
 Stage_2 stage_2;
 
 void draw()
@@ -157,6 +159,11 @@ void draw()
       stage_2.draw_stage2();
       ball2.update();
       ball2.render();
+      obstacle_2.draw_balls();
+      obstacle_2.draw_balls2();
+      obstacle_2.draw_balls3();
+      obstacle_2.draw_balls4();
+      obstacle_2.draw_balls5();
       
       
       break;
