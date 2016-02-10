@@ -21,6 +21,7 @@ void setup()
   obstacle = new Obstacle();
   obstacle_2 = new Obstacle_2();
   life_counter = 10;
+  life_counter2 = 10;
   lives = 0;
   time = millis();
   
@@ -40,7 +41,7 @@ int wait = 1000;
 int time;//divide my thousand to get second
 boolean tick; // for ticker
 int lives;
-int life_counter, life;
+int life_counter, life, life_counter2;
 Ball ball;
 Ball2 ball2;
 Stage stage;
@@ -59,10 +60,11 @@ void draw()
     {
        drawMenu(); 
        start_again();
+       start_again2();
 
        break;
     }
-  case 1:
+  case 2:
     {
         
         if(life_counter >= lives)
@@ -89,6 +91,7 @@ void draw()
       obstacle.draw_balls2();
       stage.draw_stage();
       die();
+      
       win();
       
       }
@@ -107,7 +110,7 @@ void draw()
       break;
     }
     
-    case 2:
+    case 1:
     {
       background(255,218,185);
       fill(127,255,212);
@@ -141,12 +144,34 @@ void draw()
     
     case 3:
     {
-     
-         background(255,218,185);
-         textSize(100);
-         text("YOU WIN!!!!", 500, 200);
-         textSize(40);
-         text("press 0 to go back to main menu!", 500, 500);
+      
+      if(life_counter2 >= lives)
+      {
+        background(255,218,185);
+        
+        if(millis() - time >= wait)
+      {
+
+        tick = !tick;
+        time = millis();//update time
+      }
+        
+        text((time/1000),100,100);//time left
+        line(50,10,tick ? 10 : 90,90);//ticker
+        
+      
+        stage_2.draw_stage2();
+        ball2.update();
+        ball2.render();
+        obstacle_2.draw_balls();
+        obstacle_2.draw_balls2();
+        obstacle_2.draw_balls3();
+        obstacle_2.draw_balls4();
+        obstacle_2.draw_balls5();
+        die2();
+        
+      }
+           
           
         
        
@@ -155,15 +180,14 @@ void draw()
     
     case 4:
     {
-      background(255,218,185);
-      stage_2.draw_stage2();
-      ball2.update();
-      ball2.render();
-      obstacle_2.draw_balls();
-      obstacle_2.draw_balls2();
-      obstacle_2.draw_balls3();
-      obstacle_2.draw_balls4();
-      obstacle_2.draw_balls5();
+         background(255,218,185);
+         textSize(100);
+         text("YOU WIN!!!!", 500, 200);
+         textSize(40);
+         text("press 0 to go back to main menu!", 500, 500);
+         
+         rect(700,200, 50,40);
+      
       
       
       break;
@@ -262,10 +286,115 @@ void die()
   
 }
 
+void die2()
+{
+  
+  //level 2 die
+  if(dist(ball2.x, ball2.y, obstacle_2.x,obstacle_2.y)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+  
+  if(dist(ball2.x, ball2.y, obstacle_2.x2,obstacle_2.y2)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+  
+  if(dist(ball2.x, ball2.y, obstacle_2.x3,obstacle_2.y3)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+  
+  if(dist(ball2.x, ball2.y, obstacle_2.x4,obstacle_2.y4)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+  
+  if(dist(ball2.x, ball2.y, obstacle_2.x5,obstacle_2.y5)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+   if(dist(ball2.x, ball2.y, obstacle_2.x6,obstacle_2.y6)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+  
+   if(dist(ball2.x, ball2.y, obstacle_2.x7,obstacle_2.y7)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+   if(dist(ball2.x, ball2.y, obstacle_2.x8,obstacle_2.y8)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+   if(dist(ball2.x, ball2.y, obstacle_2.x9,obstacle_2.y9)<=20)
+  {
+    life_counter2--;
+     start_again2();
+     keyP=true;
+      song.play();
+      song.rewind();
+   
+  }
+  
+  
+  
+}
+
+
+
+
 void start_again()
 {
     ball.x = 250;
     ball.y = 500;
+  
+}
+
+void start_again2()
+{
+    ball2.x = 550;
+    ball2.y = 480;
   
 }
 
@@ -274,7 +403,7 @@ int mode = 0;
 
 void keyPressed()
 {
-  if (key >= '0' && key <='9')//menu choice
+  if (key >= '0' && key <='3')//menu choice
   {
     mode = key - '0';
   }
@@ -320,12 +449,12 @@ void mouseClicked()
     
   if ((mouseX > 600) && (mouseX < 900) && (mouseY > 500) && (mouseY < 600)) //if touching medium box
   {
-    mode =1;
+    mode =2;
   }
   
   if ((mouseX > 600) && (mouseX < 900) && (mouseY > 700) && (mouseY < 800)) //if touching hard box
   {
-    mode =2;
+    mode =1;
   }
   
  
@@ -333,7 +462,7 @@ void mouseClicked()
  }
   
   
-  if(mode == 2)//if in menu to change difficulty
+  if(mode == 1)//if in menu to change difficulty
   {
   if ((mouseX > 400) && (mouseX < 1400) && (mouseY > 200) && (mouseY < 300)) //if touching easy box
   {
@@ -355,13 +484,12 @@ void mouseClicked()
   
   if ((mouseX > 700) && (mouseX < 1100) && (mouseY > 800) && (mouseY < 900)) //if touching hard box
     {
-      mode = 1;
+      mode = 2;
       
     }
   
   }
 }
-
 
 
 
