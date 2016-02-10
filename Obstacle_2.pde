@@ -55,7 +55,8 @@ class Obstacle_2
       
       
     }
-
+//moving balls up and down at speed chosen by user  
+//for level 2
   void draw_balls()
   {
     stroke(255,20,147);

@@ -1,3 +1,4 @@
+//sound files
 import java.util.*;
 import ddf.minim.spi.*;
 import ddf.minim.signals.*;
@@ -6,10 +7,10 @@ import ddf.minim.analysis.*;
 import ddf.minim.ugens.*;
 import ddf.minim.effects.*;
 
- boolean keyP;
+boolean keyP;// boolean for sound effect when dying
  
 Minim minim;
-AudioPlayer song;
+AudioPlayer song;//song variable
 
 void setup()
 {
@@ -22,15 +23,13 @@ void setup()
   obstacle_2 = new Obstacle_2();
   life_counter = 10;
   life_counter2 = 10;
-  lives = 0;
-  time = millis();
+  lives = 0;// when 0 game over
+   //showing how long the game has been played for
+  time = millis();//time starts
   
   minim = new Minim(this);
-  song = minim.loadFile("jump.mp3");
+  song = minim.loadFile("jump.mp3");//name of sound file
   
-  //showing how long the game has been played for
-  
-  //store the current time
   smooth();
   strokeWeight(3);
   
@@ -38,10 +37,13 @@ void setup()
 }
 
 int wait = 1000;
-int time;//divide my thousand to get second
+int time;//divide by thousand to get second
 boolean tick; // for ticker
 int lives;
 int life_counter, life, life_counter2;
+
+//classes
+
 Ball ball;
 Ball2 ball2;
 Stage stage;
@@ -61,7 +63,7 @@ void draw()
        drawMenu(); 
        start_again();
        start_again2();
-
+       //ball goes back to start
        break;
     }
   
@@ -100,7 +102,7 @@ void draw()
     
     case 2:
     {
-        
+        //when lives hit 0
         if(life_counter >= lives)
       {
         
@@ -113,33 +115,34 @@ void draw()
       
       background(255,218,185);
       text((time/1000),100,100);//time left
-      line(50,10,tick ? 10 : 90,90);//ticker
+      line(50,10,tick ? 10 : 90,90);//time ticker on screen
       
       stroke(127,255,212);
       textSize(40);
-      text("Lifes = " + life_counter, 1600,100);
+      text("Lifes = " + life_counter, 1600,100);//displays lives left
       
-      
+      //callng classes needed
       ball.update();
       ball.render();
       obstacle.draw_balls();
       obstacle.draw_balls2();
       stage.draw_stage();
-      die();
-      
-      win();
+      die();//if hit obstacle
+      win();//if win
       fill(148,0,211);
       stroke(148,0,211);
       rect(1600,800,200,50);
       
       stroke(0);
       fill(0);
-      text("Menu", 1650,840);
+      text("Menu", 1650,840);//back to menu
       
       }
       
       else
       {
+        
+        //if run out of lives
        background(255,218,185);
        text("GAME OVER :(, YOU LOSE", 1000, 750);
        text("PRESS 0 TO GO BACK TO MENU", 1050, 800);
@@ -169,11 +172,12 @@ void draw()
       
         text((time/1000),100,100);//time left
         line(50,10,tick ? 10 : 90,90);//ticker
-        
+        //displaying lives
         textSize(40);
         text("Lifes = " + life_counter2, 1600,100);
         
-      
+        //calling classes
+        
         stage_2.draw_stage2();
         ball2.update();
         ball2.render();
@@ -209,14 +213,20 @@ void draw()
     
     case 4:
     {
+      
+        //win screen
          background(255,218,185);
          textSize(100);
          text("YOU WIN!!!!", 500, 200);
          textSize(40);
-         text("press 0 to go back to main menu!", 500, 500);
-         
-        // rect(700,200, 50,40);
-      
+         text("Press 0 to go back to main menu or click menu below!", 300, 500);     
+         fill(148,0,211);
+         stroke(148,0,211);
+         rect(1600,800,200,50);
+          
+         stroke(0);
+         fill(0);
+         text("Menu", 1650,840);
       
       
       break;
@@ -246,10 +256,10 @@ void drawMenu()
   stroke(0);
   fill(0);
   
-  text("THE WORLDS HARDEST GAME", 250, 200);
+  text("THE WORLDS HARDEST GAME", 250, 200);//name of game
   textSize(40);
-  text("Play game", 750,560 );
-  text("Choose difficulty", 700,770 );
+  text("Play game", 750,560 );//click to play
+  text("Choose difficulty", 700,770 );//click to chose difficulty
     
   
 
@@ -261,10 +271,7 @@ void win()
 if(ball.x > 1115)
  {
    
-   mode =3;
-
-  text("press 0 to go back to main menu!", 500, 500);
-    
+   mode =3; //second level  
   
  }
   
@@ -276,9 +283,9 @@ void win2()
 if(ball2.x > 1180)
  {
    
-   mode =4;
+   mode =4;//win screen
 
-  text("press 0 to go back to main menu!", 500, 500);
+  //text("press 0 to go back to main menu!", 500, 500);
     
   
  }
@@ -290,6 +297,7 @@ void die()
 {
   
   
+  //judging the distances between the ball and obstacles for level 1
   
   if(dist(ball.x, ball.y, obstacle.x,obstacle.y)<=40)
   {
@@ -333,15 +341,15 @@ void die()
 
 void die2()
 {
-  
+  //judging the distances between the ball and obstacles for level 2
   //level 2 die
   if(dist(ball2.x, ball2.y, obstacle_2.x,obstacle_2.y)<=20)
   {
     life_counter2--;
      start_again2();
      keyP=true;
-      song.play();
-      song.rewind();
+     song.play();//play sound of dying
+     song.rewind();
    
   }
   
@@ -431,6 +439,7 @@ void die2()
 
 void start_again()
 {
+  //back to otiginal position
     ball.x = 250;
     ball.y = 500;
   
@@ -438,13 +447,14 @@ void start_again()
 
 void start_again2()
 {
+   //back to otiginal position
     ball2.x = 550;
     ball2.y = 480;
   
 }
 
 
-int mode = 0;
+int mode = 0;//start at menu
 
 void keyPressed()
 {
@@ -559,7 +569,7 @@ void mouseClicked()
   }
   
   
-  if(mode == 2 || mode ==3)//if in game go back to menu
+  if(mode == 2 || mode ==3 || mode ==4)//if in game go back to menu
   {
   if ((mouseX > 1600) && (mouseX < 1800) && (mouseY > 800) && (mouseY < 850)) //if touching easy box
   {

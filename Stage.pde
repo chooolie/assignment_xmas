@@ -1,7 +1,7 @@
 class Stage
 {
   
-  
+  //level 1 stage
   
  void draw_stage()
 {

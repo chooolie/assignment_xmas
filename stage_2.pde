@@ -5,6 +5,8 @@ class Stage_2
   
  void draw_stage2()
 {
+  
+  //level 2 stage
    //draw stage
    stroke(148,0,211);
    fill(255,218,185);

@@ -1,6 +1,7 @@
 // The class name starts with uppercase
 class Ball
 {
+  //level 1 ball
   
   float x, y;
  

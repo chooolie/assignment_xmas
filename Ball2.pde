@@ -1,17 +1,16 @@
 // The class name starts with uppercase
 class Ball2
 {
-  
+  //level 2 ball
   float x, y;
  
   //boolean AI;
  
   Ball2()
   {
+    //satrting points
     x = 550;
     y = 480;
-    
-   
    
   } 
   
@@ -26,6 +25,7 @@ class Ball2
     if (keyPressed)
     {
       //up key
+      //blocking up
       if (key == 'w')
       {
         if(y<280 && x>650 && x<1150 )
@@ -50,6 +50,7 @@ class Ball2
       
       
       //down key
+      //blocking down
       
       if (key == 's')
       {
@@ -57,12 +58,12 @@ class Ball2
         {
           y= y-5;
         }
-        if(y>510 && x <670 )//block line 10
+        if(y>510 && x <670 )
         {
           y= y-5;
         }
         
-        if(y>510 && x >1150 )//block line 10
+        if(y>510 && x >1150 )
         {
           y= y-5;
         }
@@ -75,6 +76,7 @@ class Ball2
       
       
       //left key
+      //blocking left side
       
       if (key == 'a')
        {
@@ -100,6 +102,7 @@ class Ball2
       
       
       //right key
+      //blocking right side
       
       if (key == 'd')
       {
@@ -114,7 +117,7 @@ class Ball2
         }
       
         
-        if(x>1270 )//block line 3
+        if(x>1270 )
         {
           x=x-11;
         }
