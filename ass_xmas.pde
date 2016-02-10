@@ -161,6 +161,9 @@ void draw()
         text((time/1000),100,100);//time left
         line(50,10,tick ? 10 : 90,90);//ticker
         
+        textSize(40);
+        text("Lifes = " + life_counter2, 1600,100);
+        
       
         stage_2.draw_stage2();
         ball2.update();
@@ -189,7 +192,7 @@ void draw()
          textSize(40);
          text("press 0 to go back to main menu!", 500, 500);
          
-         rect(700,200, 50,40);
+        // rect(700,200, 50,40);
       
       
       
@@ -204,7 +207,8 @@ void draw()
 void drawMenu()
 {
   
-  life_counter = 2;//lives go back to start when starting new game
+  life_counter = 10;//lives go back to start when starting new game
+  life_counter2 = 10;
   
   background(255,218,185);
   textSize(100);
@@ -421,7 +425,10 @@ int mode = 0;
 
 void keyPressed()
 {
-  if (key >= '0' && key <='3')//menu choice
+  
+  //can choose level 1, difficulty and menu only
+  //must win level 1 to get to level 2
+  if (key >= '0' && key <='2')//menu choice 
   {
     mode = key - '0';
   }
